@@ -1,14 +1,22 @@
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import java.util.Date;
-
+@XmlRootElement(name="Compte")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Compte {
     private int code;
     private double solde;
     private Date dateCreation;
 
-    public Compte(int code, double solde, Date dateCreation) {
+    @XmlTransient
+    private Date datemontant ;
+
+    public Compte(int code, double solde, Date datemontant) {
         this.code = code;
         this.solde = solde;
-        this.dateCreation = dateCreation;
+        this.datemontant = datemontant;
     }
 
     public Compte() {
@@ -36,5 +44,13 @@ public class Compte {
 
     public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
+    }
+
+    public Date getDatemontant() {
+        return datemontant;
+    }
+
+    public void setDatemontant(Date datemontant) {
+        this.datemontant = datemontant;
     }
 }
